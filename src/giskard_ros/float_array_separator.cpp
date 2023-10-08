@@ -20,10 +20,10 @@
 */
 
 #include <exception>
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 #include <boost/lexical_cast.hpp>
-#include <sensor_msgs/JointState.h>
-#include <std_msgs/Float64.h>
+#include <sensor_msgs/msg/JointState.hpp>
+#include <std_msgs/msg/float64.hpp>
 #include <giskard_ros/ros_utils.hpp>
 
 namespace giskard_ros

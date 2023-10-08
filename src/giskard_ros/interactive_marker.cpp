@@ -19,7 +19,7 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 #include <interactive_markers/interactive_marker_server.h>
 #include <actionlib/client/simple_action_client.h>
 #include <giskard_ros/ros_utils.hpp>

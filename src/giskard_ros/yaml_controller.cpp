@@ -20,10 +20,10 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 #include <ros/package.h>
-#include <sensor_msgs/JointState.h>
-#include <std_msgs/Float64.h>
+#include <sensor_msgs/msg/JointState.hpp>
+#include <std_msgs/msg/float64.hpp>
 #include <std_msgs/Float64MultiArray.h>
 #include <std_msgs/String.h>
 #include <yaml-cpp/yaml.h>

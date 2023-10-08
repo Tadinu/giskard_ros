@@ -25,7 +25,7 @@
 #include <iostream>
 #include <fstream>
 #include <exception>
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 #include <ros/package.h>
 #include <geometry_msgs/Pose.h>
 #include <giskard_msgs/SemanticFloat64.h>

@@ -19,8 +19,8 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include <ros/ros.h>
-#include <sensor_msgs/JointState.h>
+#include <rclcpp/rclcpp.hpp>
+#include <sensor_msgs/msg/JointState.hpp>
 #include <giskard_ros/ros_utils.hpp>
 
 namespace giskard_ros

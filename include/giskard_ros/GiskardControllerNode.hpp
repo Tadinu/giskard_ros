@@ -24,17 +24,17 @@
 #ifndef __GISKARD_CONTROLLER_NODE_HPP__
 #define __GISKARD_CONTROLLER_NODE_HPP__
 
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 #include <ros/package.h>
 
-#include <sensor_msgs/JointState.h>
-#include <std_msgs/Float64.h>
-#include <geometry_msgs/Point.h>
+#include <sensor_msgs/msg/joint_state.hpp>
+#include <std_msgs/msg/float64.hpp>
+#include <geometry_msgs/msg/point.hpp>
 #include <yaml-cpp/yaml.h>
 #include <giskard_core/giskard_core.hpp>
 
-#include <giskard_msgs/SetEnable.h>
-#include <giskard_msgs/Finished.h>
+//#include <giskard_msgs/msg/set_enable.hpp>
+//#include <giskard_msgs/msg/finished.hpp>
 #include <boost/bind.hpp>
 
 namespace gcn{
@@ -79,13 +79,13 @@ private:
             if (nh_.getParam("joint_names", joint_names_))
             {
                 YAML::Node node = YAML::Load(controller_description);
-                ROS_INFO("Loaded controller description.");
+                RCLCPP_INFO(rclcpp::get_logger("gcn"), "Loaded controller description.");
                 spec_ = node.as< giskard_core::QPControllerSpec >();
-                ROS_INFO("Parsed controller description.");
+                RCLCPP_INFO(rclcpp::get_logger("gcn"), "Parsed controller description.");
                 controller_ = giskard_core::generate(spec_);
-                ROS_INFO("Generated controller description.");
+                RCLCPP_INFO(rclcpp::get_logger("gcn"), "Generated controller description.");
                 state_ = Eigen::VectorXd::Zero(joint_names_.size() + goalSize_);
-                ROS_INFO("Created a state.");
+                RCLCPP_INFO(rclcpp::get_logger("gcn"), "Created a state.");
                 controller_started_ = false;
 
                 int maxK = spec_.controllable_constraints_.size();
@@ -101,20 +101,20 @@ private:
                     vel_controllers_.push_back(nh_.advertise<std_msgs::Float64>("/" + *it + "/vel_cmd", 1));
     
                 enable_service_ = nh_.advertiseService("SetEnable", &ControllerType::doSetEnable, this);
-                ROS_INFO("Waiting for seggoal.");
+                RCLCPP_INFO(rclcpp::get_logger("gcn"), "Waiting for seggoal.");
                 goal_sub_ = nh_.subscribe("goal", 0, &ControllerType::goalCallback, this);
                 js_sub_ = nh_.subscribe("joint_states", 0, &ControllerType::jointCallback, this);
                 done_adv_ = nh_.advertise<giskard_msgs::Finished>("finished", 0);
             }
             else
             {
-                ROS_ERROR("Parameter 'joint_names' not found in namespace '%s'.", nh_.getNamespace().c_str());
+                RCLCPP_ERROR(rclcpp::get_logger("gcn"), "Parameter 'joint_names' not found in namespace '%s'.", nh_.getNamespace().c_str());
                 return false;
             }
         }
         else
         {
-            ROS_ERROR("Parameter 'controller_description' not found in namespace '%s'.", nh_.getNamespace().c_str());
+            RCLCPP_ERROR(rclcpp::get_logger("gcn"), "Parameter 'controller_description' not found in namespace '%s'.", nh_.getNamespace().c_str());
             return false;
         }
         return true;
@@ -159,7 +159,7 @@ private:
         }
         else
         {
-            ROS_WARN("Update failed.");
+            RCLCPP_WARN(rclcpp::get_logger("gcn"), "Update failed.");
             // TODO: remove or change to ros_debug
             std::cout << "State " << state_ << std::endl;
         }
@@ -181,12 +181,12 @@ private:
         {
             if (controller_.start(state_, nWSR_))
             {
-                ROS_INFO("Controller started.");
+                RCLCPP_INFO(rclcpp::get_logger("gcn"), "Controller started.");
                 controller_started_ = true;
             }
             else
             {
-                ROS_ERROR("Couldn't start controller.");
+                RCLCPP_ERROR(rclcpp::get_logger("gcn"), "Couldn't start controller.");
             }
         }
     }

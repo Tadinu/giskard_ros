@@ -1,4 +1,4 @@
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 #include <actionlib/client/simple_action_client.h>
 #include <giskard_msgs/WholeBodyAction.h>
 #include <giskard_ros/ros_utils.hpp>

@@ -21,7 +21,7 @@
 
 #include <giskard_core/giskard_core.hpp>
 #include <giskard_ros/ros_utils.hpp>
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 
 namespace giskard_ros
 {

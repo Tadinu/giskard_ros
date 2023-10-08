@@ -20,7 +20,7 @@
 */
 
 #include <exception>
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 #include <visualization_msgs/MarkerArray.h>
 #include <giskard_msgs/ControllerFeedback.h>
 #include <kdl_conversions/kdl_msg.h>

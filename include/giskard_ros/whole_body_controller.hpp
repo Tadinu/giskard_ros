@@ -23,9 +23,9 @@
 #ifndef __GISKARD_WHOLE_BODY_CONTROLLER_HPP__
 #define __GISKARD_WHOLE_BODY_CONTROLLER_HPP__
 
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 #include <giskard_core/giskard_core.hpp>
-#include <sensor_msgs/JointState.h>
+#include <sensor_msgs/msg/JointState.hpp>
 #include <giskard_msgs/WholeBodyCommand.h>
 #include <giskard_msgs/ControllerFeedback.h>
 // TODO: get rid of watchdog because people hate it

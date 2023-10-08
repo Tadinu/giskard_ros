@@ -26,7 +26,7 @@
 #include <string>
 #include <Eigen/Dense>
 #include <kdl_conversions/kdl_msg.h>
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 #include <giskard_msgs/Controller.h>
 #include <giskard_core/giskard_core.hpp>
 

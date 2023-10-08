@@ -19,12 +19,12 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#include <ros/ros.h>
+#include <rclcpp/rclcpp.hpp>
 #include <actionlib/client/simple_action_client.h>
 #include <actionlib/server/simple_action_server.h>
 #include <tf2_ros/buffer_client.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
-#include <sensor_msgs/JointState.h>
+#include <sensor_msgs/msg/JointState.hpp>
 #include <std_srvs/Trigger.h>
 #include <control_msgs/FollowJointTrajectoryAction.h>
 #include <control_msgs/JointTrajectoryControllerState.h>
